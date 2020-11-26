@@ -1,2 +1,3 @@
 # big-number-spelling
-Created with CodeSandbox
+
+Learn how to spell and speak big numbers in english
