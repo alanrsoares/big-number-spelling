@@ -128,7 +128,14 @@ export function floatToEnglish(
 }
 
 export function numberToEnglish(n: string): string {
-  const sanitized = n.endsWith(".0") ? n.replace(".0", "") : n;
+  if (!n.length) {
+    return "";
+  }
+  if (n === "0") {
+    return "zero";
+  }
+
+  const sanitized = n.replace(/\.0+$/, "");
 
   const bigN = toBig(sanitized);
 
