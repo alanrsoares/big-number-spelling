@@ -16,7 +16,8 @@ import { motion } from "framer-motion";
 import { MdRecordVoiceOver } from "react-icons/md";
 
 import { numberToEnglish } from "./parser";
-import "./styles.css";
+
+const capitalize = (s: string) => s.replace(/^(\w)/, (x) => x.toUpperCase());
 
 const MotionBox = motion.custom(Box);
 const MotionImg = motion.custom(Image);
@@ -109,7 +110,7 @@ function App() {
                     overflow="hidden"
                   />
                 ) : (
-                  spelling
+                  <Text fontFamily="serif">"{capitalize(spelling)}"</Text>
                 )}
               </Heading>
               {window.speechSynthesis && (
