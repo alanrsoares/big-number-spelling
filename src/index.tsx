@@ -34,7 +34,7 @@ function App() {
     try {
       return numberToEnglish(value);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return FALLBACK_HUGE_NUMBER;
     }
   }, [value]);
@@ -99,7 +99,7 @@ function App() {
               <Heading as="h2">
                 {spelling === FALLBACK_HUGE_NUMBER ? (
                   <MotionImg
-                    src="https://memegenerator.net/img/instances/65142311/huge.jpg"
+                    src="/huge-trmp.jpg"
                     alt={FALLBACK_HUGE_NUMBER}
                     initial={{
                       scale: 0
