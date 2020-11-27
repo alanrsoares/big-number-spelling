@@ -116,15 +116,18 @@ export function floatToEnglish(
   n: Big,
   qualifiers: FloatQualifiers = CURRENCY_QUALIFIERS
 ) {
-  const [a, b] = String(n).split(".");
-  const [left, right] = [a, b].map(toBig);
+  const [leftPart, rightPart] = String(n).split(".");
+  const [left, right] = [leftPart, rightPart].map(toBig);
 
-  const hasSingleDecimal = String(b).length === 1 && b !== "0";
+  const hasSingleDecimal = String(rightPart).length === 1 && rightPart !== "0";
 
-  return [left, hasSingleDecimal ? right.times(10) : right]
+  const sanitizedRight = hasSingleDecimal ? right.times(10) : right;
+
+  return [left, sanitizedRight]
     .map(intToEnglish)
+    .filter(Boolean) // excluedes falsy entries
     .join(` ${naivePlural(qualifiers.left, left.gt(2) ? 2 : 1)} and `)
-    .concat(` ${naivePlural(qualifiers.right, right.gt(2) ? 2 : 1)}`);
+    .concat(` ${naivePlural(qualifiers.right, sanitizedRight.gt(2) ? 2 : 1)}`);
 }
 
 export function numberToEnglish(n: string): string {
