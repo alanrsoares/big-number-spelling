@@ -59,7 +59,7 @@ function App() {
       display="grid"
       placeItems="center"
       p="2rem"
-      h="100vh"
+      minH="100vh"
       justify="center"
       align="center"
     >
